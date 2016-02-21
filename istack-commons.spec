@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        2.21
-Release:        3.2%{?dist}
+Release:        3.3%{?dist}
 Summary:        Common code for some Glassfish projects
 License:        CDDL and GPLv2 with exceptions
 URL:            http://istack-commons.java.net
@@ -17,17 +17,17 @@ Source0:        %{pkg_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-mvn(com.sun.codemodel:codemodel)
+BuildRequires:  %{?scl_prefix}mvn(com.sun.codemodel:codemodel)
 BuildRequires:  %{?scl_prefix_java_common}mvn(com.sun:tools)
 BuildRequires:  %{?scl_prefix_java_common}mvn(dom4j:dom4j)
 BuildRequires:  %{?scl_prefix_java_common}mvn(junit:junit)
-BuildRequires:  maven30-mvn(net.java:jvnet-parent:pom:)
-BuildRequires:  maven30-mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  maven30-mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  maven30-mvn(org.apache.maven:maven-project)
-BuildRequires:  maven30-mvn(org.apache.maven.shared:file-management)
-BuildRequires:  maven30-mvn(org.codehaus.plexus:plexus-archiver)
-BuildRequires:  maven30-mvn(org.codehaus.plexus:plexus-io)
+BuildRequires:  %{?scl_prefix}mvn(net.java:jvnet-parent:pom:)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.maven:maven-plugin-api)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.maven:maven-project)
+BuildRequires:  %{?scl_prefix}mvn(org.apache.maven.shared:file-management)
+BuildRequires:  %{?scl_prefix}mvn(org.codehaus.plexus:plexus-archiver)
+BuildRequires:  %{?scl_prefix}mvn(org.codehaus.plexus:plexus-io)
 
 # we only need maven-plugin
 %if 0
@@ -115,7 +115,7 @@ This package contains the API documentation for %{pkg_name}.
 
 %prep
 %setup -n %{pkg_name}-%{version} -q
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 
 %pom_remove_plugin org.glassfish.copyright:glassfish-copyright-maven-plugin
@@ -147,13 +147,13 @@ set -e -x
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build -s -- -Dproject.build.sourceEncoding=UTF-8
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -189,6 +189,9 @@ set -e -x
 %doc Licence.txt
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 2.21-3.3
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 2.21-3.2
 - maven33 rebuild
 
