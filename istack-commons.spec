@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        2.21
-Release:        3.3%{?dist}
+Release:        3.4%{?dist}
 Summary:        Common code for some Glassfish projects
 License:        CDDL and GPLv2 with exceptions
 URL:            http://istack-commons.java.net
@@ -73,35 +73,30 @@ This package contains the istack-commons import properties Maven Mojo.
 
 %package buildtools
 Summary:        istack-commons buildtools
-Obsoletes:      %{?scl_prefix}%{pkg_name} < %{version}-%{release}
 
 %description buildtools
 This package contains istack-commons buildtools.
 
 %package runtime
 Summary:        istack-commons runtime
-Obsoletes:      %{?scl_prefix}%{pkg_name} < %{version}-%{release}
 
 %description runtime
 This package contains istack-commons runtime.
 
 %package soimp
 Summary:        istack-commons soimp
-Obsoletes:      %{?scl_prefix}%{pkg_name} < %{version}-%{release}
 
 %description soimp
 This package contains istack-commons soimp.
 
 %package test
 Summary:        istack-commons test
-Obsoletes:      %{?scl_prefix}%{pkg_name} < %{version}-%{release}
 
 %description test
 This package contains istack-commons test.
 
 %package tools
 Summary:        istack-commons tools
-Obsoletes:      %{?scl_prefix}%{pkg_name} < %{version}-%{release}
 
 %description tools
 This package contains istack-commons tools.
@@ -189,6 +184,9 @@ set -e -x
 %doc Licence.txt
 
 %changelog
+* Tue Jan 19 2016 Mikolaj Izdebski <mizdebsk@redhat.com> - 2.21-3.4
+- Remove obsoletes
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 2.21-3.3
 - maven33 rebuild #2
 
