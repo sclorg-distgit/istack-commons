@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        2.21
-Release:        3.4%{?dist}
+Release:        3.5%{?dist}
 Summary:        Common code for some Glassfish projects
 License:        CDDL and GPLv2 with exceptions
 URL:            http://istack-commons.java.net
@@ -16,7 +16,7 @@ URL:            http://istack-commons.java.net
 Source0:        %{pkg_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix}mvn(com.sun.codemodel:codemodel)
 BuildRequires:  %{?scl_prefix_java_common}mvn(com.sun:tools)
 BuildRequires:  %{?scl_prefix_java_common}mvn(dom4j:dom4j)
@@ -184,6 +184,9 @@ set -e -x
 %doc Licence.txt
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 2.21-3.5
+- Fix BR on maven-local & co.
+
 * Tue Jan 19 2016 Mikolaj Izdebski <mizdebsk@redhat.com> - 2.21-3.4
 - Remove obsoletes
 
