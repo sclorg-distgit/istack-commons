@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        2.21
-Release:        3.5%{?dist}
+Release:        3.6%{?dist}
 Summary:        Common code for some Glassfish projects
 License:        CDDL and GPLv2 with exceptions
 URL:            http://istack-commons.java.net
@@ -154,10 +154,12 @@ set -e -x
 %{?scl:EOF}
 
 %files -f .mfiles-istack-commons
-%dir %{_javadir}/%{pkg_name}
+%dir %{_mavenpomdir}/%{pkg_name}
 %doc Licence.txt
 
 %files -n %{?scl_prefix}%{pkg_name}-maven-plugin -f .mfiles-%{pkg_name}-maven-plugin
+%dir %{_javadir}/%{pkg_name}
+%dir %{_mavenpomdir}/%{pkg_name}
 %doc Licence.txt
 
 %if 0
@@ -184,6 +186,9 @@ set -e -x
 %doc Licence.txt
 
 %changelog
+* Thu Apr 14 2016 Michal Srb <msrb@redhat.com> - 2.21-3.6
+- Fix directory ownership (Resolves: rhbz#1325866)
+
 * Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 2.21-3.5
 - Fix BR on maven-local & co.
 
